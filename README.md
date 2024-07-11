@@ -1,24 +1,10 @@
-# README
+# DoList
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A free and open source alternative to Todoist.
 
-Things you may want to cover:
+This project uses the following technologies:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rails 7
+* Postgres
+* Tailwind
+* Hotwire (Turbo)
