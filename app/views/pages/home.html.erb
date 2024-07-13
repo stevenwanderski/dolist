@@ -3,4 +3,16 @@
   <p class="text-gray-800 text-xl tracking-tight">
     A free and open-source Todoist alternative
   </p>
+
+  <div class="mt-10 flex items-center gap-x-6">
+    <%= link_to 'Sign Up',
+        new_user_registration_path,
+        class: 'rounded-md bg-indigo-600 px-3.5 py-2.5 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+    %>
+
+    <%= link_to 'Sign In',
+        new_user_session_path,
+        class: 'rounded-md bg-white px-3.5 py-2.5 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+    %>
+  </div>
 </div>
