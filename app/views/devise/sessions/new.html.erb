@@ -1,0 +1,58 @@
+<div class="h-full bg-gray-50">
+  <div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <%= render 'layouts/flash_messages' %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+        Sign in to your account
+      </h2>
+
+      <% if devise_mapping.registerable? %>
+        <p class="mt-2 text-center text-sm text-gray-600">
+          Or
+          <%= link_to 'create a new account', new_user_registration_path, class: 'font-medium text-indigo-600 hover:text-indigo-500' %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="space-y-6">
+            <div>
+              <%= f.label :email, class: 'block text-sm font-medium leading-6 text-gray-900' %>
+              <div class="mt-2">
+                <%= f.email_field :email, autofocus: false, autocomplete: "email", class: 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' %>
+              </div>
+            </div>
+
+            <div>
+              <%= f.label :password, class: 'block text-sm font-medium leading-6 text-gray-900' %>
+              <div class="mt-2">
+                <%= f.password_field :password, autocomplete: "current-password", class: 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' %>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <%= f.check_box :remember_me, class: 'h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' %>
+                <%= f.label :remember_me, class: 'ml-2 block text-sm text-gray-900' %>
+              </div>
+
+              <div class="text-sm">
+                <%= link_to 'Forgot your password?', new_user_password_path, class: 'font-medium text-indigo-600 hover:text-indigo-500' %>
+              </div>
+            </div>
+
+            <div>
+              <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Sign in
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
