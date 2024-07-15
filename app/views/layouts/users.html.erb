@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title>DoList: A free and open source alternative to Todoist</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application" %>
+  </head>
+
+  <body class="h-full p-10">
+    <div class="flex gap-4 mb-10">
+      <div>
+        Welcome <%= current_user.email %>
+      </div>
+
+      <div>
+        <%= link_to 'Sign Out', destroy_user_session_path %>
+      </div>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>
