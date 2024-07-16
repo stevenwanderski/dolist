@@ -9,17 +9,30 @@
     <%= stylesheet_link_tag "application" %>
   </head>
 
-  <body class="h-full p-10">
-    <div class="flex gap-4 mb-10">
-      <div>
-        Welcome <%= current_user.email %>
+  <body class="h-full">
+    <div class="flex h-full">
+      <div class="bg-zinc-800 text-white text-sm p-5 min-w-[300px]">
+        <div class="mb-10">
+          <div><%= current_user.email %></div>
+          <div><%= link_to 'Logout', destroy_user_session_path %></div>
+        </div>
+
+        <div class="flex justify-between">
+          <div>
+            <%= link_to 'My Projects', users_projects_path %>
+          </div>
+
+          <div>
+            <%= link_to new_users_project_path do %>
+              <%= heroicon 'plus', options: { class: 'text-white w-5 h-5' } %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <%= link_to 'Sign Out', destroy_user_session_path %>
+      <div class="bg-zinc-900 text-white grow p-5">
+        <%= yield %>
       </div>
     </div>
-
-    <%= yield %>
   </body>
 </html>

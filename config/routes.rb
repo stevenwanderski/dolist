@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  namespace :users do
-    resources :dashboard, only: [:index]
+  namespace :users, path: 'app' do
+    resources :projects
   end
 
   devise_for :users
