@@ -1,10 +1,13 @@
 class Users::ProjectsController < Users::ApplicationController
   def index
-    @projects = current_user.projects
   end
 
   def new
     @project = Project.new
+  end
+
+  def edit
+    @project = current_user.projects.find(params[:id])
   end
 
   def create
@@ -15,6 +18,20 @@ class Users::ProjectsController < Users::ApplicationController
     else
       render 'new'
     end
+  end
+
+  def update
+    @project = current_user.projects.find(params[:id])
+
+    if @project.update(project_params)
+      redirect_to users_projects_path
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @project = current_user.projects.find(params[:id])
   end
 
   private

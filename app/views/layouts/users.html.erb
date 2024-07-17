@@ -17,7 +17,7 @@
           <div><%= link_to 'Logout', destroy_user_session_path %></div>
         </div>
 
-        <div class="flex justify-between">
+        <div class="flex justify-between mb-4">
           <div>
             <%= link_to 'My Projects', users_projects_path %>
           </div>
@@ -27,6 +27,19 @@
               <%= heroicon 'plus', options: { class: 'text-white w-5 h-5' } %>
             <% end %>
           </div>
+        </div>
+
+        <div>
+          <% @projects.each do |project| %>
+            <div class="mb-1">
+              <%= active_link_to project.name,
+                  users_project_path(project),
+                  class: 'block p-2 rounded-lg',
+                  class_active: 'bg-red-900/25 text-red-300',
+                  class_inactive: 'hover:bg-zinc-700'
+              %>
+            </div>
+          <% end %>
         </div>
       </div>
 

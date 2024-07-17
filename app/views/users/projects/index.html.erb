@@ -10,10 +10,10 @@
       </div>
 
       <% @projects.each do |project| %>
-        <div class="flex items-center justify-between hover:bg-zinc-800 rounded-lg">
+        <div class="flex items-center justify-between hover:bg-zinc-800 rounded-lg pr-4">
           <%= link_to project.name,
-              '#',
-              class: 'py-4 px-2 text-sm block grow'
+              users_project_path(project),
+              class: 'py-4 px-4 text-sm block grow'
           %>
 
           <div>

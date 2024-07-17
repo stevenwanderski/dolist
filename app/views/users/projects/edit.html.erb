@@ -1,9 +1,9 @@
 <div class="font-semibold text-lg mb-5">
-  Add Project
+  Edit
 </div>
 
 <div>
-  <%= form_for(@project, url: users_projects_path) do |f| %>
+  <%= form_for(@project, url: users_project_path(@project)) do |f| %>
     <div class="mb-5">
       <%= f.label :name, class: 'block text-sm mb-1' %>
       <%= f.text_field :name, class: 'bg-transparent border-zinc-700 p-1 text-sm rounded' %>
@@ -11,7 +11,7 @@
 
     <div class="flex gap-3">
       <%= link_to 'Cancel', users_projects_path, class: 'bg-zinc-800 py-1.5 px-4 rounded text-sm' %>
-      <%= f.button 'Add', class: 'bg-red-500 py-1.5 px-4 rounded text-sm' %>
+      <%= f.button 'Save', class: 'bg-red-500 py-1.5 px-4 rounded text-sm' %>
     </div>
   <% end %>
 </div>
