@@ -34,6 +34,12 @@ class Users::ProjectsController < Users::ApplicationController
     @project = current_user.projects.find(params[:id])
   end
 
+  def destroy
+    @project = current_user.projects.find(params[:id])
+    @project.destroy
+    redirect_to users_projects_path
+  end
+
   private
 
   def project_params
