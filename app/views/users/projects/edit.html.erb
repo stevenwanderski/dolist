@@ -8,12 +8,16 @@
       <%= form_for(@project, url: users_project_path(@project), data: { turbo_frame: '_top' }) do |f| %>
         <div class="mb-5">
           <%= f.label :name, class: 'block text-sm mb-1' %>
-          <%= f.text_field :name, class: 'bg-transparent border-zinc-700 p-1 text-sm rounded' %>
+
+          <%= f.text_field :name,
+              autofocus: true,
+              class: 'w-full bg-transparent border-zinc-700 p-1 text-sm rounded'
+          %>
         </div>
 
         <div class="flex gap-3">
-          <%= link_to 'Cancel',
-              users_projects_path,
+          <%= button_tag 'Cancel',
+              type: 'button',
               class: 'bg-zinc-800 py-1.5 px-4 rounded text-sm',
               'x-on:click' => '$("#modal").html("").removeAttr("src")'
           %>

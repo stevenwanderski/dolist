@@ -5,10 +5,14 @@
     </div>
 
     <div>
-      <%= form_for(@project, url: users_projects_path, data: { turbo_frame: '_top'} ) do |f| %>
+      <%= form_for(@project, url: users_projects_path, data: { turbo_frame: '_top'}) do |f| %>
         <div class="mb-5">
           <%= f.label :name, class: 'block text-sm mb-1' %>
-          <%= f.text_field :name, autofocus: true, class: 'bg-transparent border-zinc-700 p-1 text-sm rounded' %>
+
+          <%= f.text_field :name,
+              autofocus: true,
+              class: 'w-full bg-transparent border-zinc-700 p-1 text-sm rounded'
+          %>
         </div>
 
         <div class="flex gap-3">
