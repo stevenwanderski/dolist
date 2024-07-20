@@ -19,13 +19,17 @@
           <div>
             <%= link_to 'Edit',
                 edit_users_project_path(project),
-                class: 'text-sm'
+                class: 'text-sm',
+                data: { turbo_frame: 'modal' }
             %>
 
             <%= link_to 'Delete',
-                delete_users_project_path(project),
-                onclick: 'return confirm("Are you sure?")',
-                class: 'text-sm'
+                users_project_path(project),
+                class: 'text-sm',
+                data: {
+                  turbo_method: :delete,
+                  turbo_confirm: 'Are you sure?'
+                }
             %>
           </div>
         </div>

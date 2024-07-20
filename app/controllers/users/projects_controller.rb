@@ -37,7 +37,7 @@ class Users::ProjectsController < Users::ApplicationController
   def destroy
     @project = current_user.projects.find(params[:id])
     @project.destroy
-    redirect_to users_projects_path
+    redirect_to users_projects_path, status: :see_other
   end
 
   private
