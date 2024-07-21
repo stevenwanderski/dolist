@@ -14,8 +14,14 @@
               </div>
             </div>
 
-            <div>
-              <%= link_to 'Edit', edit_users_project_task_path(@project, task), class: 'text-sm' %>
+            <div class="flex gap-2">
+              <div>
+                <%= link_to 'Edit', edit_users_project_task_path(@project, task), class: 'text-sm' %>
+              </div>
+
+              <div>
+                <%= link_to 'Delete', users_project_task_path(@project, task), class: 'text-sm', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+              </div>
             </div>
           </div>
         </turbo-frame>
