@@ -34,11 +34,10 @@ class Users::TasksController < Users::ApplicationController
   end
 
   def complete
+    @project = current_user.projects.find(params[:project_id])
+    @tasks = @project.active_tasks
     @task = current_user.tasks.find(params[:id])
-
-    @task.update!(is_complete: true)
-
-    redirect_to users_project_path(@project)
+    @task.update!(is_completed: true)
   end
 
   private
