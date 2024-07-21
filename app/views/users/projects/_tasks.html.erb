@@ -1,0 +1,25 @@
+<div id="tasks">
+  <% if tasks.any? %>
+    <div class="mb-3">
+      <% tasks.each do |task| %>
+        <turbo-frame id="edit_task">
+          <div class="flex justify-between items-center py-3 border-b border-b-slate-700">
+            <div class="flex gap-2">
+              <%= link_to complete_users_project_task_path(@project, task) do %>
+                Done
+              <% end %>
+
+              <div class="text-sm text-slate-200">
+                <%= task.name %>
+              </div>
+            </div>
+
+            <div>
+              <%= link_to 'Edit', edit_users_project_task_path(@project, task), class: 'text-sm' %>
+            </div>
+          </div>
+        </turbo-frame>
+      <% end %>
+    </div>
+  <% end %>
+</div>

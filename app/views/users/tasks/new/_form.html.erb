@@ -1,0 +1,27 @@
+<%= form_for(task, url: users_project_tasks_path, data: { turbo_frame: '_top', turbo_action: 'replace' }) do |f| %>
+  <div class="rounded-xl border border-slate-600">
+    <div class="p-2 border-b border-b-slate-700">
+      <%= f.label :name, class: 'sr-only' %>
+
+      <%= f.text_field :name,
+          placeholder: 'Task name',
+          autofocus: true,
+          class: 'w-full bg-transparent border-none p-1 text-sm focus:outline-none focus:ring-0'
+      %>
+
+      <%= f.text_area :description,
+          placeholder: 'Description',
+          class: 'w-full bg-transparent border-none p-1 text-sm focus:outline-none focus:ring-0'
+      %>
+    </div>
+
+    <div class="flex justify-end gap-3 p-2">
+      <%= link_to 'Cancel',
+          users_project_path(project),
+          class: 'bg-zinc-800 py-1.5 px-4 rounded text-sm'
+      %>
+
+      <%= f.button 'Add Task', class: 'bg-red-500 py-1.5 px-4 rounded text-sm' %>
+    </div>
+  </div>
+<% end %>

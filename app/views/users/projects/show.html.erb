@@ -4,27 +4,9 @@
       <%= @project.name %>
     </h1>
 
-    <% if @tasks.any? %>
-      <div class="mb-3">
-        <% @tasks.each do |task| %>
-          <turbo-frame id="edit_task">
-            <div class="flex justify-between items-center py-3 border-b border-b-slate-700">
-              <div class="text-sm text-slate-200">
-                <%= task.name %>
-              </div>
+    <%= render 'tasks', tasks: @tasks %>
 
-              <div>
-                <%= link_to 'Edit', edit_users_project_task_path(@project, task), class: 'text-sm' %>
-              </div>
-            </div>
-          </turbo-frame>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% new_task_path = new_users_project_task_path(project_id: @project.id) %>
-
-    <%= content_tag 'turbo-frame', id: 'task', src: @show_task ? new_task_path : nil do %>
+    <%= turbo_frame_tag 'new_task' do %>
       <%= link_to new_users_project_task_path(project_id: @project.id), class: 'group', data: { turbo_frame: 'task' } do %>
         <div class="flex gap-2">
           <%= heroicon 'plus', options: { class: 'text-red-500 w-5 h-5 rounded-full group-hover:text-white group-hover:bg-red-500' } %>

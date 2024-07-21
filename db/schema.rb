@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_135338) do
     t.integer "project_id"
     t.string "name"
     t.text "description"
-    t.boolean "is_completed"
+    t.boolean "is_completed", default: false
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -15,7 +15,8 @@ class Users::TasksController < Users::ApplicationController
     @task.project_id = @project.id
 
     if @task.save
-      redirect_to users_project_path(@project, show_task: 'true')
+      @tasks = @project.active_tasks
+      @new_task = Task.new
     else
       render 'new'
     end
@@ -32,16 +33,13 @@ class Users::TasksController < Users::ApplicationController
     end
   end
 
-  # def show
-  #   @project = current_user.projects.find(params[:id])
-  #   @tasks = @project.tasks
-  # end
+  def complete
+    @task = current_user.tasks.find(params[:id])
 
-  # def destroy
-  #   @project = current_user.projects.find(params[:id])
-  #   @project.destroy
-  #   redirect_to users_projects_path, status: :see_other
-  # end
+    @task.update!(is_complete: true)
+
+    redirect_to users_project_path(@project)
+  end
 
   private
 

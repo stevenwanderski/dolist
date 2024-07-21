@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "tasks" do %>
+  <%= render 'users/projects/tasks', tasks: @tasks %>
+<% end %>
+
+<%= turbo_stream.replace "new_task" do %>
+  <%= render 'users/tasks/new/form', task: @new_task, project: @project %>
+<% end %>

@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[7.1]
       t.integer :project_id
       t.string :name
       t.text :description
-      t.boolean :is_completed
+      t.boolean :is_completed, default: false
       t.integer :weight
 
       t.timestamps

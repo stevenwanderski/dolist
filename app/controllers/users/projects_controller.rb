@@ -31,9 +31,9 @@ class Users::ProjectsController < Users::ApplicationController
   end
 
   def show
-    @project = current_user.projects.find(params[:id])
-    @tasks = @project.tasks.order(created_at: :asc)
     @show_task = params[:show_task] == 'true'
+    @project = current_user.projects.find(params[:id])
+    @tasks = @project.active_tasks
   end
 
   def destroy

@@ -50,7 +50,7 @@
       <div class="bg-zinc-900 text-white grow p-5 overflow-scroll">
         <%= yield %>
 
-        <turbo-frame id="modal"></turbo-frame>
+        <%= turbo_frame_tag 'modal' %>
       </div>
     </div>
   </body>

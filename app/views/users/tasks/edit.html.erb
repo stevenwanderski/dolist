@@ -1,4 +1,4 @@
-<turbo-frame id="edit_task">
+<%= turbo_frame_tag 'edit_task' do %>
   <div>
     <%= form_for(@task, url: users_project_task_path(@project, @task), data: { turbo_frame: '_top'}) do |f| %>
       <div class="rounded-xl border border-slate-600">
@@ -28,4 +28,4 @@
       </div>
     <% end %>
   </div>
-</turbo-frame>
+<% end %>

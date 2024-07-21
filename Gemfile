@@ -24,6 +24,7 @@ gem "devise"
 gem "heroicon"
 gem "active_link_to"
 gem "awesome_print"
+gem 'turbo-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
