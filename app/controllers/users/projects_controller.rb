@@ -26,12 +26,14 @@ class Users::ProjectsController < Users::ApplicationController
     if @project.update(project_params)
       redirect_to users_projects_path
     else
-      render 'new'
+      render 'edit'
     end
   end
 
   def show
     @project = current_user.projects.find(params[:id])
+    @tasks = @project.tasks.order(created_at: :asc)
+    @show_task = params[:show_task] == 'true'
   end
 
   def destroy
