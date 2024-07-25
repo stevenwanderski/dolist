@@ -18,7 +18,7 @@ class Users::TasksController < Users::ApplicationController
       @tasks = @project.active_tasks
       @new_task = Task.new
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 
@@ -27,17 +27,11 @@ class Users::TasksController < Users::ApplicationController
     @task = current_user.tasks.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to users_project_path(@project)
+      @tasks = @project.active_tasks
+      @new_task = Task.new
     else
-      render 'edit'
+      render 'edit', status: :unprocessable_entity
     end
-  end
-
-  def complete
-    @project = current_user.projects.find(params[:project_id])
-    @tasks = @project.active_tasks
-    @task = current_user.tasks.find(params[:id])
-    @task.update!(is_completed: true)
   end
 
   def destroy
@@ -45,6 +39,13 @@ class Users::TasksController < Users::ApplicationController
     @tasks = @project.active_tasks
     @task = current_user.tasks.find(params[:id])
     @task.destroy
+  end
+
+  def complete
+    @project = current_user.projects.find(params[:project_id])
+    @tasks = @project.active_tasks
+    @task = current_user.tasks.find(params[:id])
+    @task.update!(is_completed: true)
   end
 
   private

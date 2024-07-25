@@ -2,7 +2,7 @@
   <% if tasks.any? %>
     <div class="mb-3">
       <% tasks.each do |task| %>
-        <turbo-frame id="edit_task">
+        <%= turbo_frame_tag "#{dom_id(task)}_edit" do %>
           <div class="flex justify-between items-center py-3 border-b border-b-slate-700">
             <div class="flex items-center gap-2">
               <%= link_to complete_users_project_task_path(@project, task), data: { turbo_method: :post }, class: 'group w-[18px] h-[18px] rounded-full border border-slate-400' do %>
@@ -24,7 +24,7 @@
               </div>
             </div>
           </div>
-        </turbo-frame>
+        <% end %>
       <% end %>
     </div>
   <% end %>

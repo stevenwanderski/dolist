@@ -6,8 +6,8 @@
 
     <%= render 'tasks', tasks: @tasks %>
 
-    <%= turbo_frame_tag 'new_task' do %>
-      <%= link_to new_users_project_task_path(project_id: @project.id), class: 'group', data: { turbo_frame: 'task' } do %>
+    <%= turbo_frame_tag 'new_task_frame' do %>
+      <%= link_to new_users_project_task_path(project_id: @project.id), class: 'group' do %>
         <div class="flex gap-2">
           <%= heroicon 'plus', options: { class: 'text-red-500 w-5 h-5 rounded-full group-hover:text-white group-hover:bg-red-500' } %>
 

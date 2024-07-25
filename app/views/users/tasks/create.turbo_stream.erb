@@ -2,6 +2,6 @@
   <%= render 'users/projects/tasks', tasks: @tasks %>
 <% end %>
 
-<%= turbo_stream.replace "new_task" do %>
+<%= turbo_stream.update "new_task_frame" do %>
   <%= render 'users/tasks/new/form', task: @new_task, project: @project %>
 <% end %>
