@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :tasks, except: [:index] do
         member do
           post :complete, action: :complete
+          post :update_weight, action: :update_weight
         end
       end
     end

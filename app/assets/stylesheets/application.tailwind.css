@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+.sortable-placeholder {
+  @apply h-[40px] bg-zinc-800 block border-t-2 border-red-600;
 }
 
-*/
+.ui-sortable-helper {
+  @apply px-4;
+}
+
+.ui-sortable-helper [data-handle] {
+  @apply opacity-0 cursor-grabbing;
+}

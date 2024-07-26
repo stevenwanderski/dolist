@@ -1,4 +1,6 @@
 class Users::TasksController < Users::ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:update_weight]
+
   def new
     @project = current_user.projects.find(params[:project_id])
     @task = Task.new
@@ -46,6 +48,12 @@ class Users::TasksController < Users::ApplicationController
     @tasks = @project.active_tasks
     @task = current_user.tasks.find(params[:id])
     @task.update!(is_completed: true)
+  end
+
+  def update_weight
+    @project = current_user.projects.find(params[:project_id])
+    @task = current_user.tasks.find(params[:id])
+    @task.update!(weight: params[:weight])
   end
 
   private
