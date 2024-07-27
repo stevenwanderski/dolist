@@ -6,6 +6,6 @@ class Users::ApplicationController < ApplicationController
   private
 
   def set_projects
-    @projects = current_user.projects
+    @projects = current_user.projects.order(weight: :asc)
   end
 end

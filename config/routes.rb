@@ -7,6 +7,10 @@ Rails.application.routes.draw do
           post :update_weight, action: :update_weight
         end
       end
+
+      member do
+        post :update_weight, action: :update_weight
+      end
     end
   end
 

@@ -1,4 +1,6 @@
 class Users::ProjectsController < Users::ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:update_weight]
+
   def index
   end
 
@@ -40,6 +42,11 @@ class Users::ProjectsController < Users::ApplicationController
     @project = current_user.projects.find(params[:id])
     @project.destroy
     redirect_to users_projects_path, status: :see_other
+  end
+
+  def update_weight
+    @project = current_user.projects.find(params[:id])
+    @project.update!(weight: params[:weight])
   end
 
   private

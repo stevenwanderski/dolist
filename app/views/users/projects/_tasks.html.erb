@@ -1,6 +1,6 @@
 <div id="tasks">
   <% if tasks.any? %>
-    <div class="mb-3" data-sortable>
+    <div class="mb-3" data-sortable-tasks>
       <% tasks.each do |task| %>
         <%= turbo_frame_tag "#{dom_id(task)}_edit", class: 'group block bg-zinc-900 border-b border-b-zinc-700 relative flex justify-between items-center py-2', data: { task_id: task.id } do %>
           <div class="opacity-0 group-hover:opacity-100 absolute -left-[25px] pr-[5px]">
