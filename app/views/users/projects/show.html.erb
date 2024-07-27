@@ -19,23 +19,3 @@
     <% end %>
   </div>
 </div>
-
-<script>
-  $('[data-sortable-tasks]').sortable({
-    handle: '[data-handle]',
-    placeholder: 'sortable-placeholder',
-
-    update(event, ui) {
-      const index = ui.item.index();
-      const taskId = ui.item.data('task-id');
-
-      fetch(`/app/projects/<%= @project.id %>/tasks/${taskId}/update_weight`, {
-        method: 'POST',
-        body: JSON.stringify({ weight: index + 1 }),
-        headers: {
-          "Content-Type": "application/json",
-        }
-      });
-    }
-  })
-</script>
