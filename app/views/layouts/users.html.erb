@@ -22,30 +22,7 @@
           <div><%= link_to 'Logout', destroy_user_session_path %></div>
         </div>
 
-        <div class="flex justify-between mb-4">
-          <div>
-            <%= link_to 'My Projects', users_projects_path %>
-          </div>
-
-          <div>
-            <%= link_to new_users_project_path, data: { turbo_frame: 'modal' } do %>
-              <%= heroicon 'plus', options: { class: 'text-white w-5 h-5' } %>
-            <% end %>
-          </div>
-        </div>
-
-        <div data-sortable-projects>
-          <% @projects.each do |project| %>
-            <div class="mb-1" data-project-id="<%= project.id %>">
-              <%= active_link_to project.name,
-                  users_project_path(project),
-                  class: 'block p-2 rounded-lg',
-                  class_active: 'bg-[#472525] text-red-300',
-                  class_inactive: 'hover:bg-zinc-700'
-              %>
-            </div>
-          <% end %>
-        </div>
+        <%= render 'layouts/users/projects', projects: @projects %>
       </div>
 
       <div class="bg-zinc-900 text-white grow p-5 overflow-scroll">
