@@ -21,7 +21,7 @@
       <div class="bg-zinc-800 text-white text-sm p-5 min-w-[300px]">
         <div class="mb-10">
           <div><%= current_user.email %></div>
-          <div><%= link_to 'Logout', destroy_user_session_path %></div>
+          <div><%= link_to 'Logout', destroy_user_session_path, data: { turbo_prefetch: false } %></div>
         </div>
 
         <%= render 'layouts/users/projects', projects: @projects %>

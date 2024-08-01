@@ -26,9 +26,8 @@
                 }
             %>
 
-            <div x-show="open" class="absolute top-6 right-0 min-w-[200px] z-10 rounded-xl border border-zinc-600 bg-zinc-800">
+            <div x-show="open" x-cloak class="absolute top-6 right-0 min-w-[200px] z-10 rounded-xl border border-zinc-600 bg-zinc-800">
               <div class="divide-y divide-zinc-700">
-
                 <div class="px-1.5 py-1.5">
                   <%= link_to edit_users_project_task_path(@project, task), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded' do %>
                     <%= heroicon 'pencil-square', options: { class: 'h-5 w-5 text-slate-100' } %>
@@ -42,7 +41,6 @@
                     <span>Delete</span>
                   <% end %>
                 </div>
-
               </div>
             </div>
           </div>
