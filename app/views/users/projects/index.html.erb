@@ -10,27 +10,38 @@
       </div>
 
       <% @projects.each do |project| %>
-        <div class="flex items-center justify-between hover:bg-zinc-800 rounded-lg pr-4">
+        <div x-data="{ open: false }" class="group flex items-center justify-between relative hover:bg-zinc-800 rounded-lg pr-4">
           <%= link_to project.name,
               users_project_path(project),
               class: 'py-4 px-4 text-sm block grow'
           %>
 
-          <div>
-            <%= link_to 'Edit',
-                edit_users_project_path(project),
-                class: 'text-sm',
-                data: { turbo_frame: 'modal' }
-            %>
-
-            <%= link_to 'Delete',
-                users_project_path(project),
-                class: 'text-sm',
-                data: {
-                  turbo_method: :delete,
-                  turbo_confirm: 'Are you sure?'
+          <div class="group-hover:flex hidden h-6 items-center relative hover:bg-zinc-700 rounded mr-2 text-white">
+            <%= heroicon 'ellipsis-horizontal',
+                options: {
+                  class: 'h-8 w-8 text-zinc-100 cursor-pointer',
+                  '@click' => 'open = !open; $event.preventDefault();',
+                  '@click.outside' => 'open = false'
                 }
             %>
+          </div>
+
+          <div x-show="open" x-cloak class="absolute top-10 right-0 min-w-[200px] z-10 rounded-xl border border-zinc-600 bg-zinc-800 text-zinc-300">
+            <div class="divide-y divide-zinc-700">
+              <div class="px-1.5 py-1.5">
+                <%= link_to edit_users_project_path(project), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded', data: { turbo_frame: 'modal' } do %>
+                  <%= heroicon 'pencil-square', options: { class: 'h-5 w-5 text-slate-100' } %>
+                  <span>Edit</span>
+                <% end %>
+              </div>
+
+              <div class="px-1.5 py-1.5">
+                <%= link_to users_project_path(project), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+                  <%= heroicon 'trash', options: { class: 'h-5 w-5 text-slate-100' } %>
+                  <span>Delete</span>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>

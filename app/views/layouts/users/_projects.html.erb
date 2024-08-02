@@ -1,9 +1,11 @@
-<div class="flex justify-between mb-4">
-  <div>
-    <%= link_to 'My Projects', users_projects_path %>
-  </div>
+<% active_list = is_active_link?(users_projects_path, :exact) %>
+<% active_list_classes = class_names(
+  'bg-[#472525]' => active_list
+) %>
+<div class="flex justify-between items-center mb-1 rounded-lg <%= active_list_classes %>">
+  <%= link_to 'My Projects', users_projects_path, class: 'grow p-2' %>
 
-  <div>
+  <div class="mr-2">
     <%= link_to new_users_project_path, data: { turbo_frame: 'modal' } do %>
       <%= heroicon 'plus', options: { class: 'text-white w-5 h-5' } %>
     <% end %>
@@ -19,7 +21,7 @@
        )
     %>
 
-    <div class="group mb-1 flex justify-between items-center rounded-lg <%= classes %>" data-project-id="<%= project.id %>">
+    <div x-data="{ open: false }" class="group mb-1 relative flex justify-between items-center rounded-lg <%= classes %>" data-project-id="<%= project.id %>">
       <%= link_to project.name,
           users_project_path(project),
           class: 'block grow p-2'
@@ -30,30 +32,30 @@
         <%= tasks_count if tasks_count > 0 %>
       </div>
 
-      <div x-data="{ open: false }" x-cloak class="group-hover:flex hidden h-5 items-center relative hover:bg-zinc-700 rounded mr-2 text-white">
+      <div class="group-hover:flex hidden h-5 items-center relative hover:bg-zinc-700 rounded mr-2 text-white">
         <%= heroicon 'ellipsis-horizontal',
             options: {
               class: 'h-6 w-6 text-zinc-100 cursor-pointer',
-              '@click' => 'open = true; $event.preventDefault();',
+              '@click' => 'open = !open; $event.preventDefault();',
               '@click.outside' => 'open = false'
             }
         %>
+      </div>
 
-        <div x-show="open" class="absolute top-6 right-0 min-w-[200px] z-10 rounded-xl border border-zinc-600 bg-zinc-800">
-          <div class="divide-y divide-zinc-700">
-            <div class="px-1.5 py-1.5">
-              <%= link_to edit_users_project_path(project), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded', data: { turbo_frame: 'modal' } do %>
-                <%= heroicon 'pencil-square', options: { class: 'h-5 w-5 text-slate-100' } %>
-                <span>Edit</span>
-              <% end %>
-            </div>
+      <div x-show="open" x-cloak class="absolute top-10 right-0 min-w-[200px] z-10 rounded-xl border border-zinc-600 bg-zinc-800 text-zinc-300">
+        <div class="divide-y divide-zinc-700">
+          <div class="px-1.5 py-1.5">
+            <%= link_to edit_users_project_path(project), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded', data: { turbo_frame: 'modal' } do %>
+              <%= heroicon 'pencil-square', options: { class: 'h-5 w-5 text-slate-100' } %>
+              <span>Edit</span>
+            <% end %>
+          </div>
 
-            <div class="px-1.5 py-1.5">
-              <%= link_to users_project_path(project), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-                <%= heroicon 'trash', options: { class: 'h-5 w-5 text-slate-100' } %>
-                <span>Delete</span>
-              <% end %>
-            </div>
+          <div class="px-1.5 py-1.5">
+            <%= link_to users_project_path(project), class: 'flex gap-2 items-center text-[13px] py-2 px-3 hover:bg-zinc-700 rounded', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <%= heroicon 'trash', options: { class: 'h-5 w-5 text-slate-100' } %>
+              <span>Delete</span>
+            <% end %>
           </div>
         </div>
       </div>
