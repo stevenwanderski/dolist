@@ -7,7 +7,7 @@
 
   <div class="mr-2">
     <%= link_to new_users_project_path, data: { turbo_frame: 'modal' } do %>
-      <%= heroicon 'plus', options: { class: 'text-white w-5 h-5' } %>
+      <%= heroicon 'plus', options: { class: 'text-white w-4 h-4' } %>
     <% end %>
   </div>
 </div>
@@ -27,7 +27,7 @@
           class: 'block grow p-2'
       %>
 
-      <div class="group-hover:hidden text-[12px] text-zinc-500 mr-4">
+      <div class="group-hover:hidden text-[12px] text-zinc-500 mr-3.5">
         <% tasks_count = project.active_tasks.count %>
         <%= tasks_count if tasks_count > 0 %>
       </div>
